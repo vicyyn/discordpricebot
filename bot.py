@@ -1,9 +1,10 @@
 import discord
 import time
 from pycoingecko import CoinGeckoAPI
-import random
 
 token = 'cope'
+guildName = 'COPE'
+botToken = 'your_bot_token'
 
 async def update(price,change):
   print('updating')
@@ -18,7 +19,8 @@ async def update(price,change):
         activity=discord.Activity(type=discord.ActivityType.watching,
                                   name=change+"%" + " | copeusd coingecko price | made by @vicyyn")
     );
-    await client.guilds[1].me.edit(nick = price + " USD")
+    guild = [ guild for guild in client.guilds if guild.name== guildName]
+    await guild[0].me.edit(nick = price + " USD")
   except Exception as e:
     print(e)
   print('updated')
@@ -44,4 +46,4 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     await main()
 
-client.run(botToken,  reconnect = true)
+client.run(botToken,  reconnect = True)
