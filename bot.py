@@ -26,7 +26,7 @@ async def main():
   while True:
       coin = cg.get_price(include_24hr_change='true',ids='cope', vs_currencies='usd')
       print(coin['cope']['usd'])
-      price = str("{:.2f}".format(coin['cope']['usd'] + (random.randint(1,3)/100)))
+      price = str("{:.2f}".format(coin['cope']['usd']))
       change = str(coin['cope']['usd_24h_change'])
       change = "{:.2f}".format(float(change))
       print("price is : " + price + " change : " + change)
