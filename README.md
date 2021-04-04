@@ -1,5 +1,5 @@
-## Discord price bot for cope
-I made a discord price bot for cope. can be used for other tokens too :)
+## Discord price bot
+can be used for any token on coingecko
 
 ### Usage
 - 1.change the bot token.
