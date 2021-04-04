@@ -1,9 +1,9 @@
 import discord
-import time
 from pycoingecko import CoinGeckoAPI
+import asyncio
 
 token = 'cope'
-guildName = 'COPE'
+guildName = "COPE"
 botToken = 'your_bot_token'
 
 async def update(price,change):
@@ -26,7 +26,6 @@ async def update(price,change):
   print('updated')
 
 async def main():
-  starttime = time.time()
   while True:
       coin = cg.get_price(include_24hr_change='true',ids=token, vs_currencies='usd')
       print(coin[token]['usd'])
@@ -35,7 +34,7 @@ async def main():
       change = "{:.2f}".format(float(change))
       print("price is : " + price + " change : " + change)
       await update(price,change)
-      time.sleep(20.0 - ((time.time() - starttime) % 20.0))
+      await asyncio.sleep(5)
 
 
 client = discord.Client()
