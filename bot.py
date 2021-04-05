@@ -35,7 +35,8 @@ async def main():
         change = "{:.2f}".format(float(change))
         print("price is : " + price + " change : " + change)
       except:
-        continue
+  continue
+        await asyncio.sleep(10)
       await update(price,change)
       await asyncio.sleep(5)
 
