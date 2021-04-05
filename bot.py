@@ -27,12 +27,15 @@ async def update(price,change):
 
 async def main():
   while True:
-      coin = cg.get_price(include_24hr_change='true',ids=token, vs_currencies='usd')
-      print(coin[token]['usd'])
-      price = str("{:.2f}".format(coin[token]['usd']))
-      change = str(coin[token]['usd_24h_change'])
-      change = "{:.2f}".format(float(change))
-      print("price is : " + price + " change : " + change)
+      try:
+        coin = cg.get_price(include_24hr_change='true',ids=token, vs_currencies='usd')
+        print(coin[token]['usd'])
+        price = str("{:.2f}".format(coin[token]['usd']))
+        change = str(coin[token]['usd_24h_change'])
+        change = "{:.2f}".format(float(change))
+        print("price is : " + price + " change : " + change)
+      except:
+        continue
       await update(price,change)
       await asyncio.sleep(5)
 
